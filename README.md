@@ -17,14 +17,7 @@
 14.[](#)  
 15.[](#)  
 
-## NgIf
-## NgFor
-## Pipe
-## Router Outlet
-## Path
-## @Input
 
-One Way Binding コントローラーからビュー
 
 ## インストール
 ```
