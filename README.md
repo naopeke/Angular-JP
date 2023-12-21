@@ -1,8 +1,26 @@
 # INDEX
-インストール
-モジュールの作成
-コンポーネントの作成
-ダウングレード
+[](#)
+1.[インストール](#インストール)  
+2.[モジュールの作成](#モジュールの作成)  
+3.[コンポーネントの作成](#コンポーネントの作成)  
+4.[ダウングレード](#ダウングレード)  
+5.[ルーティング](#ルーティング)  
+6.[文字列補間（単方向バインディング）](#文字列補間単方向バインディング)  
+7.[プロパティバインディング（単方向バインディング）](#プロパティバインディング単方向バインディング)  
+8.[（イベントバインディング）単方向バインディング](#イベントバインディング)  
+8.[双方向バインディング](#双方向バインディング)  
+9.[](#)  
+10.[](#)  
+
+## NgIf
+## NgFor
+## Pipe
+## Router Outlet
+## Path
+## @Input
+
+One Way Binding コントローラーからビュー
+
 ## インストール
 ```
 npm i -g @angular/cli@16.2.10
@@ -61,9 +79,62 @@ npm list @angular-devkit/build-angular
 npm install @angular-devkit/build-angular@16.2.10 --save-dev
 ```
 
-## One Way Binding コントローラーからビュー
-## One way Binding　ビューからコントローラー
-## Two Way Binding
+## ルーティング
+異なるビューやコンポーネントをナビゲーションバーのURLに基づいて表示するための仕組み  
+1.ルーティングモジュールの作成: 多くのプロジェクトでは、ルーティングを管理するために専用のモジュール（通常は AppRoutingModule）を作成  
+```
+ng generate module app-routing --flat --module=app
+```
+2.ルートの定義  
+![Captura desde 2023-12-21 12-18-18](https://github.com/naopeke/Angular-JP/assets/143800388/c8b9fb42-b1b3-4c43-a48e-1cbba09f6d50)  
+
+3.<router-outlet> の使用: 通常は app.component.html）に <router-outlet> を配置  
+![Captura desde 2023-12-21 12-18-37](https://github.com/naopeke/Angular-JP/assets/143800388/9ab8b155-cbaf-4168-a6c6-6e70348c4e6f)  
+  
+4.ナビゲーションリンクの設定: routerLink ディレクティブを使って、異なるルートへのナビゲーションリンクを設定  
+![Captura desde 2023-12-21 12-18-57](https://github.com/naopeke/Angular-JP/assets/143800388/28963912-6a6b-4ce1-8f65-9fcca8945cbc)
+  
+## 文字列補間（単方向バインディング）
+One Way Binding コントローラーからビュー  
+二重中括弧 {{ }} を使って、コンポーネントの TypeScript クラスからテンプレート（HTML）にデータをバインド  
+```
+<h1>{{expression}}</h1>
+<img src="{{expression}}" />
+<div [class]="expression" ></div>
+<img [bind-src]="expression" />
+```
+![Captura desde 2023-12-21 12-09-38](https://github.com/naopeke/Angular-JP/assets/143800388/15e99fe4-d88e-4934-809d-7d9f286cce13)  
+  
+文字列の連結、算術演算、メソッドの呼び出しなども可能  
+![Captura desde 2023-12-21 12-09-49](https://github.com/naopeke/Angular-JP/assets/143800388/3517b9f8-9c9c-4743-94de-7b2d66087a4e)  
+
+## プロパティバインディング（単方向バインディング）
+One Way Binding コントローラーからビュー  
+コンポーネントのクラスプロパティとテンプレート内の HTML 要素プロパティを結びつける重要な機能  
+プロパティバインディングは角括弧 [] を使って行われます。これは、コンポーネントのプロパティを HTML 要素のプロパティにバインドするために使用される。  
+![Captura desde 2023-12-21 12-29-15](https://github.com/naopeke/Angular-JP/assets/143800388/f36063f8-6e23-4c21-b4ae-df20597b214c)  
+ExampleComponent の userName プロパティがテキストボックスの value 属性にバインドされています。このため、テキストボックスには初期値として "John Doe" が表示される。  
+    
+属性バインディング: DOM の属性にバインドする。例: <div [attr.role]="myRole"></div>  
+クラスバインディング: CSS クラスにバインドする。例: <div [class.special]="isSpecial"></div>  
+スタイルバインディング: インラインスタイルにバインドする。例: <div [style.color]="isSpecial ? 'red' : 'green'</div>  
+## （イベントバインディング）単方向バインディング
+ビューからコントローラー  
+テンプレート（HTML）内のイベント（ユーザーの操作など）をコンポーネントのメソッドにバインドするためのメカニズム  
+（反応させたいDOMイベントの名前）＝”イベントがトリガーされたときに実行されるコンポーネントのメソッド”  
+![Captura desde 2023-12-21 12-59-34](https://github.com/naopeke/Angular-JP/assets/143800388/bc63f430-74b2-4e08-9caa-f6da8c8a63d1)  
+
+コンポーネント内でのメソッド定義  
+イベントバインディングに関連付けられたメソッドは、コンポーネントのクラス内に定義されます。
+![Captura desde 2023-12-21 13-00-26](https://github.com/naopeke/Angular-JP/assets/143800388/07968e03-a3ac-4ad8-b3c3-db298413b77b)  
+  
+イベントオブジェクトの使用  
+イベントハンドラーには、イベントオブジェクトへのアクセスが可能です。  
+![Captura desde 2023-12-21 13-11-35](https://github.com/naopeke/Angular-JP/assets/143800388/47b3d1f4-7f03-4574-93eb-4327175c9613)  
+$event はクリックイベントのマウスイベントオブジェクトを表します。  
+
+## 双方向バインディング
+Two Way Binding
 ## NgIf
 ## NgFor
 ## Pipe
