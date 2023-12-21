@@ -1,4 +1,8 @@
 # INDEX
+インストール
+モジュールの作成
+コンポーネントの作成
+ダウングレード
 ## インストール
 ```
 npm i -g @angular/cli@16.2.10
@@ -41,6 +45,9 @@ ng g c nombre-del componente
 ```
 npm start<br>
 ```
+http://localhost:4200/  
+  
+## ダウングレード
 **Actively supported versions**
 https://angular.io/guide/versions
 Node.js
@@ -53,9 +60,6 @@ Angular (Downgrade @angular-devkit/build-angular)
 npm list @angular-devkit/build-angular
 npm install @angular-devkit/build-angular@16.2.10 --save-dev
 ```
-
-http://localhost:4200/
-
 
 ## One Way Binding コントローラーからビュー
 ## One way Binding　ビューからコントローラー
