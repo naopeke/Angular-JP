@@ -19,7 +19,7 @@
 16.[Service](#service)  
 17.[navigateとnavigateByUrl](#navigateとnavigateByUrl)  
 18.[Location](#location)
-19.
+19.[ActivatedRoute](#activatedroute)
 
 
 
@@ -311,5 +311,47 @@ URL変更（ブラウザの履歴に追加せずに）
 ```
 replaceUrl(path: string): void {
   this.location.replaceState(path);
+}
+```
+
+## ActivatedRoute
+まずコンポーネントに注入  
+```
+import { ActivatedRoute } from '@angular/router';
+
+constructor(private route: ActivatedRoute) { }
+```
+ルートパラメータの取得：URLの動的セグメント（例えば、/product/:id の :id）  
+```
+ngOnInit() {
+  this.route.paramMap.subscribe(params => {
+    const productId = params.get('id');
+    // パラメータ 'id' の値を使用する
+  });
+}
+```
+クエリパラメータの取得:URLのクエリパラメータ（例えば、?search=text の search）  
+```
+ngOnInit() {
+  this.route.queryParamMap.subscribe(queryParams => {
+    const searchQuery = queryParams.get('search');
+    // クエリパラメータ 'search' の値を使用する
+  });
+}
+```
+フラグメントの取得:URLのフラグメント（例えば、#section1 の section1）  
+```
+ngOnInit() {
+  this.route.fragment.subscribe(fragment => {
+    // URLのフラグメントを使用する
+  });
+}
+```
+データの取得:静的データやリゾルバ経由で取得されたデータ
+```
+ngOnInit() {
+  this.route.data.subscribe(data => {
+    // ルートに関連するデータを使用する
+  });
 }
 ```
