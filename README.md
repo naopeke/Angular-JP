@@ -11,11 +11,16 @@
 8.[双方向データバインディング](#双方向データバインディング)  
 9.[ngIf](#ngif)  
 10.[ngFor](#ngfor)  
-11.[](#)  
-12.[](#)  
-13.[](#)  
-14.[](#)  
-15.[](#)  
+11.[PIPE](#pipe)  
+12.[@Input](#@input)  
+13.[@Output](#@output)  
+14.[EventEmitter](#eventemitter)  
+15.[Bootstrap](#bootstrap)  
+16.[Service](#service)  
+17.[navigateとnavigateByUrl](#navigateとnavigateByUrl)  
+18.[Location](#location)
+19.
+
 
 
 
@@ -212,4 +217,99 @@ else 条件を使用して、条件が false の場合に別のテンプレー�
 ![Captura desde 2023-12-21 10-08-52](https://github.com/naopeke/Angular_Commands/assets/143800388/98417bbd-e522-4307-992a-222e4c3259bb)
 
 ## EventEmitter
+カスタムイベントをコンポーネント間で送信するために使用されるオブジェクト。これは主に子コンポーネントから親コンポーネントへのデータの伝達に利用される  
+1.EventEmitterのインポート  
+![Captura desde 2024-01-09 17-48-37](https://github.com/naopeke/Angular-JP/assets/143800388/1a6f79b8-79ac-4fad-ab78-95b198788015)  
+  
+2.EventEmitterのインスタンスの作成  
+![Captura desde 2024-01-09 17-49-34](https://github.com/naopeke/Angular-JP/assets/143800388/7297e669-3692-49a2-9c00-99c0109667cc)  
+
+3.親コンポーネントでのイベントの受信  
+親コンポーネントのテンプレートで、子コンポーネントのイベントにリスナーを設定  
+![Captura desde 2024-01-09 17-50-23](https://github.com/naopeke/Angular-JP/assets/143800388/04d1493d-02cd-4e64-bb7a-9554fb472140)  
+親コンポーネントのクラスで、イベントが発火したときに実行する関数を定義
+![Captura desde 2024-01-09 17-52-24](https://github.com/naopeke/Angular-JP/assets/143800388/295a3b19-6f82-4004-86b9-927469db5c77)
+
+
 ## Bootstrap
+```
+npm install bootstrap jquery @popperjs/core
+```
+angular.JSON
+```
+"styles": [
+
+  "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
+    "src/styles.scss"
+
+    ],
+
+    "scripts": [
+
+    "node_modules/jquery/dist/jquery.min.js",
+
+    "node_modules/@popperjs/core/dist/umd/popper.min.js",
+
+    "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+    ]
+
+```
+
+## Service
+アプリケーション全体で使用される共有データやロジックをカプセル化するためのもの。  
+コンポーネント間でのデータ共有、API呼び出し、ユーザー認証、ロギングなどの機能を提供するために使用  
+
+1.サービスの作成  
+![Captura desde 2024-01-09 17-56-41](https://github.com/naopeke/Angular-JP/assets/143800388/a7ea2c75-63df-4393-82a6-fee399a88d0b)  
+  
+2.サービスの実装  
+my-service.service.ts  
+必要なロジックやデータアクセスのメソッドを定義  
+![Captura desde 2024-01-09 17-57-47](https://github.com/naopeke/Angular-JP/assets/143800388/889f0776-239f-496a-8a23-d0f8e02f9aed)  
+
+3.サービスの注入と使用  
+コンポーネントのコンストラクター内でサービスを注入  
+![Captura desde 2024-01-09 17-59-06](https://github.com/naopeke/Angular-JP/assets/143800388/e4632c6a-7800-486d-9620-cbb2deab9984)
+  
+## navigateとnavigateByUrl
+navigate  
+```
+this.router.navigate(['/path', { queryParams: { page: 1 } }]);
+```
+navigateByUrl  
+```
+this.router.navigateByUrl('/path?page=1');
+```
+
+## Location
+1.インポート  
+```
+import { Location } from '@angular/common';
+```
+
+2.コンポーネントでの注入  
+```
+constructor(private location: Location) { }
+```
+
+3.メソッドの使用  
+戻るボタン  
+```
+goBack(): void {
+  this.location.back();
+}
+```
+URL取得
+```
+currentUrl(): string {
+  return this.location.path();
+}
+```
+URL変更（ブラウザの履歴に追加せずに）
+```
+replaceUrl(path: string): void {
+  this.location.replaceState(path);
+}
+```
