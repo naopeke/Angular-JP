@@ -144,9 +144,8 @@ Two Way Binding
 イベントバインディング: テンプレート内のユーザーのアクション（例えば、テキストボックスへの入力）がコンポーネントのメソッドにバインドされ、それによってコンポーネントの状態が更新されます。  
   
 Angular では、[(ngModel)] ディレクティブを使って双方向バインディングを実現します。これは、特にフォーム要素での使用に適しています。  
-![Captura desde 2023-12-21 13-39-40](https://github.com/naopeke/Angular-JP/assets/143800388/da0d9f7f-3edb-4e4b-976f-be04f649a783)
-この例では、username というコンポーネントのプロパティが <input> 要素の value 属性にバインドされています。ユーザーがテキストボックスに何かを入力すると、username プロパティが自動的に更新されます。同様に、username プロパティの値がプログラム的に変更されると、テキストボックスの表示内容も更新さ
-れます。  
+![Captura desde 2023-12-21 13-39-40](https://github.com/naopeke/Angular-JP/assets/143800388/da0d9f7f-3edb-4e4b-976f-be04f649a783)  
+この例では、username というコンポーネントのプロパティが <input> 要素の value 属性にバインドされています。ユーザーがテキストボックスに何かを入力すると、username プロパティが自動的に更新されます。同様に、username プロパティの値がプログラム的に変更されると、テキストボックスの表示内容も更新されます。  
 ![Captura desde 2023-12-21 13-42-05](https://github.com/naopeke/Angular-JP/assets/143800388/46d9844c-57bc-4673-a235-a24cdf4854b4)  
   
 ![Captura desde 2023-12-21 13-42-40](https://github.com/naopeke/Angular-JP/assets/143800388/90830745-5ed5-4ea2-853a-fdc6b39343b4)  
